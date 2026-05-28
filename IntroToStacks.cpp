@@ -1,71 +1,121 @@
-#include <iostream>
-#include <vector>
+// #include<iostream>
+// #include<vector>
+// using namespace std;
+
+// // Creating Stack using vector
+
+// class Stack
+// {
+// 	vector<int> vec;
+// 	public:
+// 	void push(int val)
+// 	{
+// 		vec.push_back(val);
+// 	}
+	
+// 	void pop()
+// 	{
+// 		if(isEmpty())
+// 		{
+// 			cout<<"Empty Stack !";
+// 			return;
+// 		}
+// 		vec.pop_back();
+// 	}
+	
+// 	int top()
+// 	{
+// 		if(isEmpty()) 
+// 		{
+// 			cout<<"Empty Stack !";
+// 			return -1;
+			
+// 		}
+// 		int lastidx = vec.size()-1;
+// 		return vec[lastidx];
+// 	}
+// 	bool isEmpty(){
+// 		return vec.size() == 0;
+		
+// 	}
+// };
+
+// int main()
+// {
+// 	Stack s;
+// 	s.push(3);
+// 	s.push(2);
+// 	s.push(1);
+	
+// 	while(!s.isEmpty())
+// 	{
+// 		cout<<s.top()<<" ";
+// 		s.pop();
+// 	}
+	
+	
+// 	return 0;
+// }
+
+
+//  Stack implementation Using Arrays =>
+
+#include<iostream>
 using namespace std;
 
-// Creating Stack using Vector
-
-class Stack
+class Array
 {
-private:
-    vector<int> vec;   // Vector to store stack elements
-
-public:
-
-    // Push element into stack  -> O(1)
-    void push(int val)
-    {
-        vec.push_back(val);
-    }
-
-    // Remove top element from stack
-    void pop()
-    {
-        // Check if stack is empty
-        if (isEmpty())
-        {
-            cout << "Stack is Empty." << endl;
-            return;
-        }
-
-        vec.pop_back();
-    }
-
-    // Return top element of stack
-    int top()
-    {
-        // Check if stack is empty
-        if (isEmpty())
-        {
-            cout << "Stack is Empty." << endl;
-            return -1;
-        }
-
-        int lastIdx = vec.size() - 1;
-        return vec[lastIdx];
-    }
-
-    // Check stack is empty or not
-    bool isEmpty()
-    {
-        return vec.size() == 0;
-    }
+	int arr[1000];
+	int lastIdx = -1;
+	 
+	public:
+	
+	void push(int val)
+	{
+		lastIdx++;
+		arr[lastIdx] = val;
+	}
+	
+	void pop()
+	{
+		 if(lastIdx == -1)
+		{
+			cout << "Stack Empty!" << endl;
+			return;
+		}
+		lastIdx--;
+	}
+	int top()
+	{
+		if(lastIdx == -1)
+		{
+			cout<<"Empty Stack !";
+		}
+		return arr[lastIdx];
+	}
+	bool isEmpty()
+	{
+		return lastIdx == -1;
+	}
 };
+
 
 int main()
 {
-    Stack s;
-
-    // Inserting elements into stack
-    s.push(3);
-    s.push(2);
-    s.push(1);
-
-    // Printing and removing elements
-    while (!s.isEmpty())
-    {
-        cout << s.top() << endl;
-        s.pop();
-    }
-
-    return 0;
+	
+	Array a;
+	
+	a.push(10);
+	a.push(20);
+	a.push(30);
+	a.push(40);
+	a.push(50);
+	
+	while(!a.isEmpty())
+	{
+		cout<<a.top();
+		a.pop();
+	}
+	
+	return 0;
 }
